@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Psychic Game</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+<body>
+
+    <h1>Click what letter I'm thinking of!</h1>
+    <h3 id="wins">wins: <span id="winsDisplay"></span></h3>
+    <h3 id="losses">losses:</h3>
+    <h3 id="guessesLeft">guesses left: <span id="guessesLeftDisplay"></span></h3>
+    <h3 id="guessesSoFar"> your guesses so far:</h3>
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            var winCounter = 0;
+            var lossCounter = 0;
+            var guessCounter = 9;
+            var letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+            //var userText = document.getElementById("user-text");
+            //var youCounter= 0;?????
+            var computerPick = letters[Math.floor(Math.random() * 26)]
+            console.log(computerPick)
+            display();
+
+            var arrayLength = letters.length;
+
+            for (var i = 0; i < arrayLength; i++) {
+                //console.log(letters[i]);
+            }
+
+
+
+
+            document.onkeyup = function (event) {
+                var guess = event.key;
+                console.log(guess);
+
+                // win
+                if (computerPick.toLowerCase() == guess) {
+                    alert("won");
+                    winCounter++;
+                }
+                //loose
+                else {
+                    
+                    if(guessCounter > 0){
+                        alert("wrong guess");
+                        guessCounter--;
+                    }
+                    else {
+                        lossCounter++;
+                        alert("SORRY, YOU LOOSE!");
+                    }
+                    
+                }
+                display();
+
+            };
+
+            function display(){
+                $("#winsDisplay").text(winCounter);
+                $("#guessesLeftDisplay").text(guessCounter);
+            }
+
+            /* $("#wins").on("user-text", function() {
+             winCounter++; 
+           });*/
+
+        });
+
+    </script>
+
+</body>
+
+</html>
