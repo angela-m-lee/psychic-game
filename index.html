@@ -10,10 +10,18 @@
 <body>
 
     <h1>Click what letter I'm thinking of!</h1>
-    <h3 id="wins">wins: <span id="winsDisplay"></span></h3>
-    <h3 id="losses">losses:</h3>
-    <h3 id="guessesLeft">guesses left: <span id="guessesLeftDisplay"></span></h3>
-    <h3 id="guessesSoFar"> your guesses so far:</h3>
+    <h3 id="wins">wins:
+        <span id="winsDisplay"></span>
+    </h3>
+    <h3 id="losses">losses:
+        <span id="lossesDisplay"></span>
+    </h3>
+    <h3 id="guessesLeft">guesses left:
+        <span id="guessesLeftDisplay"></span>
+    </h3>
+    <h3 id="guessesSoFar"> your guesses so far:
+        <span id="guessesDisplay"></span>
+    </h3>
 
     <script type="text/javascript">
 
@@ -31,12 +39,9 @@
 
             var arrayLength = letters.length;
 
-            for (var i = 0; i < arrayLength; i++) {
+            /*for (var i = 0; i < arrayLength; i++) {
                 //console.log(letters[i]);
-            }
-
-
-
+            }*/
 
             document.onkeyup = function (event) {
                 var guess = event.key;
@@ -44,29 +49,32 @@
 
                 // win
                 if (computerPick.toLowerCase() == guess) {
-                    alert("won");
+                    alert("WOOHOO! YOU WON!");
                     winCounter++;
+                    alert("Refresh the page to start another game :)");
                 }
                 //loose
                 else {
-                    
-                    if(guessCounter > 0){
+
+                    if (guessCounter > 0) {
                         alert("wrong guess");
                         guessCounter--;
                     }
                     else {
                         lossCounter++;
                         alert("SORRY, YOU LOOSE!");
+                        alert("Refresh the page to start another game :)");
                     }
-                    
+
                 }
                 display();
 
             };
 
-            function display(){
+            function display() {
                 $("#winsDisplay").text(winCounter);
                 $("#guessesLeftDisplay").text(guessCounter);
+                $("#lossesDisplay").text(lossCounter);
             }
 
             /* $("#wins").on("user-text", function() {
